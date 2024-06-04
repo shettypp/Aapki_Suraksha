@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='network.css') }}">
+    <title>SOS Networking Hub</title>
+</head>
+
+<body>
+    <header>
+        <img src="https://static.thenounproject.com/png/457451-200.png" alt="sos" width="200px" height="150px">
+        <h1>AAPKI SURAKSHA</h1>
+        
+    </header>
+    
+    <p>
+
+        "Your Lifeline in Emergencies – Quick, Reliable, and Local."
+
+
+    </p>
+    <main>
+        <h2>Emergency Contact Numbers</h2>
+    </main>
+    <form action="/emergency">
+        <label for="state">CHOOSE THE STATE/UNION TERRITORY:</label><br>
+        <select id="state" name="state">
+            <option value="select">Select</option>
+            {% for i in info %}
+                <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Search">
+    </form>
+
+    <div id="emergencyNumbers">
+        <ul id="emergencyList">
+                {% if state_numbers %}
+                    {% for i in state_numbers %}
+                        <li>{{ i[1] }}</li>
+                    {% endfor %}
+                {% else %}
+                    <h2>Select a State</h2>
+                {% endif %}
+        </ul>
+    </div>
+
+
+    <nav>
+        <h3>Accsess all the Indian and State Government websites : </h3><br>
+        <a href="stategov">State Governments</a>
+        <a href="indiangov">Indian Government</a>
+    </nav>
+      <footer>
+        &copy; 2023 AAPKI SURAKSHA
+        Contact/feedback : aapkisuraksha@gmail.com
+    </footer>
+</body>
+
+</html>
